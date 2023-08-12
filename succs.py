@@ -318,11 +318,25 @@ def get_images(tip: Tip, count=4):
             for variety in varieties]
 
 
+def describe_date(tip: Tip):
+    """Return a string representation of the date."""
+    today = date.today()
+    tip_date = date(today.year, tip.month, tip.day)
+    month_name = tip_date.strftime('%B')
+    if tip.day < 10:
+        return f'early {month_name}'
+    elif tip.day < 20:
+        return f'mid {month_name}'
+    else:
+        return f'late {month_name}'
+
+
 def format_tip(tip: Tip):
     """Return a string representation of the tip."""
+    date_str = describe_date(tip)
     example_list = '\n'.join([str(name).title() for name in
                               sorted(exemplar_succulents[tip.succulent_type])])
-    return f'''Succulent tip: {tip.title}
+    return f'''Succulent tip for {date_str}: {tip.title}
 
 {tip.description}
 
