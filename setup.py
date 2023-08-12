@@ -24,5 +24,8 @@ setup(
     ],
     keywords='kanji hanzi ring twitter bot',
     py_modules=['succs', 'bot'],
-    install_requires=['Mastodon.py']
+    install_requires=[
+        'Mastodon.py',
+        'urllib3<2',  # AWS botocore doesn't support urllib3 2+ yet
+    ]
 )
