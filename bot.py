@@ -64,7 +64,7 @@ def post(tip: succs.Tip):
 
 
 def do_toot(event, context):
-    tip = choose_tip() or succs.tips[0]
+    tip = choose_tip()
     if tip:
         post(tip)
     else:
