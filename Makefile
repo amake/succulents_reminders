@@ -26,7 +26,7 @@ update: | $(venv)
 	$(venv)/bin/pip install --upgrade pip
 	$(venv)/bin/pip install --upgrade --upgrade-strategy eager -e .
 
-$(payload): *.py config.ini bot_clientcred.secret | $(venv) dist
+$(payload): $(wildcard *.py) config.ini bot_clientcred.secret | $(venv) dist
 	rm -rf $(@)
 	zip $(@) $(^) -x \*.pyc
 	root=$$(pwd); cd $(venv)/lib/$(python)/site-packages; \
