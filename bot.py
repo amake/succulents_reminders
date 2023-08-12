@@ -22,7 +22,6 @@ mastodon = Mastodon(client_id='bot_clientcred.secret',)
 mastodon.log_in(
     config['Auth']['username'],
     config['Auth']['password'],
-    to_file='bot_usercred.secret'
 )
 
 
