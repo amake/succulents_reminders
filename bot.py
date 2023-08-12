@@ -46,3 +46,11 @@ def post(tip: succs.Tip):
         visibility='public',
         language='en'
     )
+
+
+def do_toot(event, context):
+    tip = choose_tip() or succs.tips[0]
+    if tip:
+        post(tip)
+    else:
+        print('No tips found for today.')
