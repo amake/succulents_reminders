@@ -231,8 +231,6 @@ exemplar_succulents = {
     ]
 }
 
-img_base_url = 'https://amake-bots.s3.us-west-2.amazonaws.com/succs'
-
 photos = {
     Variety.Cotyledon: [
         'IMG_3407.jpg', 'IMG_3551.jpg', 'IMG_3837.jpg', 'IMG_4307.jpg',
@@ -314,8 +312,7 @@ def get_images(tip: Tip, count=4):
          if photos[variety]],
         count
     )
-    return [f'{img_base_url}/{choice(photos[variety])}'
-            for variety in varieties]
+    return [choice(photos[variety]) for variety in varieties]
 
 
 def describe_date(tip: Tip):

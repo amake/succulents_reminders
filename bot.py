@@ -1,4 +1,6 @@
 import os
+from contextlib import contextmanager
+from io import BytesIO
 from mastodon import Mastodon
 from configparser import ConfigParser
 from datetime import date
@@ -31,13 +33,26 @@ def choose_tip():
     return tips[0] if tips else None
 
 
+@contextmanager
+def s3_file(bucket: str, path: str):
+    import boto3
+    s3 = boto3.client('s3')
+    file_bytes = BytesIO()
+    try:
+        s3.download_fileobj(bucket, path, file_bytes)
+        file_bytes.seek(0)
+        yield file_bytes
+    finally:
+        file_bytes.close()
+
+
 def post(tip: succs.Tip):
     images = succs.get_images(tip)
 
     media_dicts = []
     for image in images:
-        with urllib.request.urlopen(image) as response:
-            media_dict = mastodon.media_post(response, mime_type='image/jpg')
+        with s3_file('amake-bots', f'succs/{image}') as img_file:
+            media_dict = mastodon.media_post(img_file, mime_type='image/jpg')
             media_dicts.append(media_dict)
 
     mastodon.status_post(
