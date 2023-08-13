@@ -53,6 +53,8 @@ invoke: ## Invoke AWS Lambda
 invoke:
 	aws $(aws_args) lambda invoke \
 		--function-name $(lambda_name) \
+		--cli-binary-format raw-in-base64-out \
+		--payload '{"date": "2023-03-01"}' \
 		/dev/null
 
 heics = $(wildcard assets/*.HEIC)

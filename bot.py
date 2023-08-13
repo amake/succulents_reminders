@@ -3,7 +3,7 @@ from contextlib import contextmanager
 from io import BytesIO
 from mastodon import Mastodon
 from configparser import ConfigParser
-from datetime import date
+import datetime
 from enum import StrEnum
 import succs
 
@@ -36,10 +36,9 @@ def get_client(flavor: Flavor):
     return mastodon
 
 
-def choose_tip(flavor: Flavor):
-    today = date.today()
+def choose_tip(flavor: Flavor, date: datetime.date = None):
     tips = succs.get_tips(
-        today,
+        date or datetime.date.today(),
         succs.Hemisphere.Northern if flavor == Flavor.North
         else succs.Hemisphere.Southern
     )
@@ -79,8 +78,13 @@ def post(flavor: Flavor, tip: succs.Tip):
 
 
 def do_toot(event, context):
+    date = None
+    try:
+        date = datetime.datetime.strptime(event['date'], '%Y-%m-%d')
+    except Exception:
+        pass
     for flavor in Flavor:
-        if tip := choose_tip(flavor):
+        if tip := choose_tip(flavor, date):
             try:
                 post(flavor, tip)
             except Exception as e:
