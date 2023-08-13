@@ -266,7 +266,7 @@ photos = {
     Variety.Sempervivum: [
         'IMG_3568.jpg', 'IMG_3569.jpg', 'IMG_3983.jpg',
     ],
-    Variety.Senecio: [],  # TODO
+    Variety.Senecio: ['IMG_3550.jpg'],
     Variety.Agave: [
         'IMG_4299.jpg', 'IMG_4360.jpg', 'IMG_4377.jpg', 'IMG_4747.jpg',
     ],
@@ -290,7 +290,7 @@ photos = {
         'IMG_1538.jpg', 'IMG_1553.jpg'
     ],
     Variety.Othonna: [],  # TODO
-    Variety.Pleiospilos: [],  # TODO
+    Variety.Pleiospilos: ['IMG_2925.jpg'],
 }
 
 relevant_succulents_titles = {
