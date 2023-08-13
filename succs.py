@@ -39,7 +39,7 @@ tips = [
         '🔥☀️ Protect from the sun ☀️🔥',
         'Consider moving your spring/autumn succulents to a well-ventilated '
         'area with partial shade to protect them from the sun.'),
-    Tip(9, 15, GrowingType.SpringAutumn, TipType.Location,
+    Tip(9, 13, GrowingType.SpringAutumn, TipType.Location,
         '🌞🌱 Move into the sun 🌱🌞',
         'Consider moving your spring/autumn succulents to a well-ventilated '
         'place where they will get plenty of sun.'),
@@ -51,7 +51,7 @@ tips = [
         '💦 Water freely 💦',
         'Your spring/autumn succulents are ready to be watered thoroughly as '
         'soon as their soil is dry.'),
-    Tip(6, 10, GrowingType.SpringAutumn, TipType.Watering,
+    Tip(6, 11, GrowingType.SpringAutumn, TipType.Watering,
         '💧 Reduce watering 💧',
         'Reduce the amount and frequency of watering for your spring/autumn '
         'succulents as we approach the hot summer months.'),
@@ -68,7 +68,7 @@ tips = [
         '💧 Reduce watering 💧',
         'As we approach winter, reduce watering of your spring/autumn '
         'succulents to once or twice per month.'),
-    Tip(3, 1, GrowingType.SpringAutumn, TipType.Fertilizing,
+    Tip(3, 2, GrowingType.SpringAutumn, TipType.Fertilizing,
         '🌱📈 Fertilize! 📈🌱',
         'Consider giving your spring/autumn succulents a bit of slow-release '
         'fertilizer.'),
@@ -76,12 +76,12 @@ tips = [
         '🌱📈 Fertilize! 📈🌱',
         'Consider giving your spring/autumn succulents a bit of slow-release '
         'fertilizer.'),
-    Tip(9, 15, GrowingType.SpringAutumn, TipType.Fertilizing,
+    Tip(9, 14, GrowingType.SpringAutumn, TipType.Fertilizing,
         '🌱📈 Fertilize! 📈🌱',
         'Consider giving your spring/autumn succulents a bit of slow-release '
         'fertilizer. But hold off if you prefer them to change color over '
         'winter!'),
-    Tip(3, 1, GrowingType.SpringAutumn, TipType.Maintenance,
+    Tip(3, 3, GrowingType.SpringAutumn, TipType.Maintenance,
         '🛠️ Spring maintenance 🛠️',
         'Now is a great time to start doing maintenance on your spring/autumn '
         'succulents such as: repotting, splitting offsets, and propagating.'),
@@ -90,11 +90,11 @@ tips = [
         'Now is a great time to start doing maintenance on your spring/autumn '
         'succulents such as repotting and splitting offsets.'),
     # Summer
-    Tip(4, 1, GrowingType.Summer, TipType.Location,
+    Tip(4, 2, GrowingType.Summer, TipType.Location,
         '🌞🌱 Move outside 🌱🌞',
         'Now that it’s warmer out, you can start moving your summer '
         'succulents outside so they can get more light.'),
-    Tip(5, 1, GrowingType.Summer, TipType.Location,
+    Tip(5, 2, GrowingType.Summer, TipType.Location,
         '🌞🌱 Move into the sun 🌱🌞',
         'Consider moving your summer succulents to a place where they '
         'will get plenty of sun.'),
@@ -102,30 +102,30 @@ tips = [
         'Move inside',
         'Before it gets colder than 5℃ (40°F), start moving your summer '
         'succulents indoors, but make sure they still get plenty of light.'),
-    Tip(4, 1, GrowingType.Summer, TipType.Watering,
+    Tip(4, 3, GrowingType.Summer, TipType.Watering,
         '💧 Slowly increase watering 💧',
         'You can start watering your summer succulents a bit.'),
-    Tip(5, 1, GrowingType.Summer, TipType.Watering,
+    Tip(5, 3, GrowingType.Summer, TipType.Watering,
         '💦 Water freely 💦',
         'Your summer succulents are ready to be watered thoroughly as '
         'soon as their soil is completely dry.'),
-    Tip(9, 15, GrowingType.Summer, TipType.Watering,
+    Tip(9, 16, GrowingType.Summer, TipType.Watering,
         '💧 Reduce watering 💧',
         'Reduce the amount and frequency of watering for your summer '
         'succulents as it gets cooler.'),
-    Tip(11, 1, GrowingType.Summer, TipType.Watering,
+    Tip(11, 2, GrowingType.Summer, TipType.Watering,
         '🛑 Stop watering 🛑',
         'As we approach winter, your summer succulents don’t need any more '
         'water. Give them a break until next spring!'),
-    Tip(5, 1, GrowingType.Summer, TipType.Fertilizing,
+    Tip(5, 4, GrowingType.Summer, TipType.Fertilizing,
         '🌱📈 Fertilize! 📈🌱',
         'Consider giving your summer succulents a bit of slow-release '
         'fertilizer.'),
-    Tip(7, 1, GrowingType.Summer, TipType.Fertilizing,
+    Tip(7, 2, GrowingType.Summer, TipType.Fertilizing,
         '🌱📈 Fertilize! 📈🌱',
         'Consider giving your summer succulents a bit of slow-release '
         'fertilizer.'),
-    Tip(5, 1, GrowingType.Summer, TipType.Maintenance,
+    Tip(5, 5, GrowingType.Summer, TipType.Maintenance,
         '🛠️ Summer maintenance 🛠️',
         'Now is a great time to start doing maintenance on your summer '
         'succulents such as: repotting, splitting offsets, and propagating.'),
@@ -134,29 +134,29 @@ tips = [
         '🌞🌱 Move outside 🌱🌞',
         'Now that it’s warmer out, you can start moving your winter '
         'succulents outside so they can get more light.'),
-    Tip(6, 10, GrowingType.Winter, TipType.Location,
+    Tip(6, 12, GrowingType.Winter, TipType.Location,
         '😎 Move into the shade 😎',
         'Consider moving your winter succulents to a well-ventilated '
         'area with partial shade to protect them from the sun.'),
-    Tip(9, 15, GrowingType.Winter, TipType.Location,
+    Tip(9, 17, GrowingType.Winter, TipType.Location,
         '🌞🌱 Move into the sun 🌱🌞',
         'If you’ve been protecting your winter succulents from the summer '
         'sun, consider moving them back to a well-ventilated place '
         'where they will get plenty of light as we approach winter.'),
-    Tip(3, 1, GrowingType.Winter, TipType.Watering,
+    Tip(3, 4, GrowingType.Winter, TipType.Watering,
         '💦 Water freely 💦',
         'Your winter succulents are ready to be watered thoroughly as '
         'soon as their soil is dry.'),
-    Tip(6, 10, GrowingType.Winter, TipType.Watering,
+    Tip(6, 13, GrowingType.Winter, TipType.Watering,
         '💧 Reduce watering 💧',
         'Reduce the amount and frequency of watering for your winter '
         'succulents as we approach the hot summer months.'),
-    Tip(7, 1, GrowingType.Winter, TipType.Watering,
+    Tip(7, 3, GrowingType.Winter, TipType.Watering,
         '💧 Water sparingly 💧',
         'Now that summer is here, you’ll want to cut watering of your '
         'winter succulents to twice per month, just enough to wet the surface '
         'of the soil.'),
-    Tip(9, 15, GrowingType.Winter, TipType.Watering,
+    Tip(9, 18, GrowingType.Winter, TipType.Watering,
         '💧 Slowly increase watering 💧',
         'You can start watering your winter succulents a bit more.'),
     Tip(10, 1, GrowingType.Winter, TipType.Watering,
@@ -167,11 +167,11 @@ tips = [
         '💧 Reduce watering 💧',
         'As we approach winter, reduce watering of your winter '
         'succulents to twice per month.'),
-    Tip(3, 1, GrowingType.Winter, TipType.Fertilizing,
+    Tip(3, 5, GrowingType.Winter, TipType.Fertilizing,
         '🌱📈 Fertilize! 📈🌱',
         'Consider giving your winter succulents a bit of slow-release '
         'fertilizer.'),
-    Tip(10, 1, GrowingType.Winter, TipType.Fertilizing,
+    Tip(10, 2, GrowingType.Winter, TipType.Fertilizing,
         '🌱📈 Fertilize! 📈🌱',
         'Consider giving your winter succulents a bit of slow-release '
         'fertilizer.'),

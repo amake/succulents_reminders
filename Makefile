@@ -65,8 +65,15 @@ deploy-assets: assets
 
 .PHONY: test
 test: ## Test locally
-test: | $(venv)
+test: test-execute test-unittest
+
+.PHONY: test-execute
+test-execute: | $(venv)
 	$(venv)/bin/python succs.py 2023-03-01
+
+.PHONY: test-unittest
+test-unittest: | $(venv)
+	$(venv)/bin/python -m unittest tests/test_*.py
 
 .PHONY: help
 help: ## Show this help text
