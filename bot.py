@@ -29,7 +29,7 @@ mastodon.log_in(
 
 def choose_tip():
     today = date.today()
-    tips = succs.get_tips(today)
+    tips = succs.get_tips(today, succs.Hemisphere.Northern)
     return tips[0] if tips else None
 
 

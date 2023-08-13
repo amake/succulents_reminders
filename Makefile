@@ -70,6 +70,7 @@ test: test-execute test-unittest
 .PHONY: test-execute
 test-execute: | $(venv)
 	$(venv)/bin/python succs.py 2023-03-01
+	$(venv)/bin/python succs.py 2023-03-01 Southern
 
 .PHONY: test-unittest
 test-unittest: | $(venv)

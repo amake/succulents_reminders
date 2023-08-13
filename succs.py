@@ -5,6 +5,15 @@ from typing import NamedTuple
 from datetime import date, datetime
 
 
+class Hemisphere(Enum):
+    """Hemisphere."""
+
+    Northern = auto()
+    Southern = auto()
+
+# All data assumes Northern Hemisphere
+
+
 class GrowingType(Enum):
     """Succulent growing type."""
 
@@ -291,10 +300,12 @@ relevant_succulents_titles = {
 }
 
 
-def get_tips(on_date: date):
+def get_tips(on_date: date, hemisphere: Hemisphere):
     """Return a list of tips for the given date."""
-    return [tip for tip in tips
-            if tip.month == on_date.month and tip.day == on_date.day]
+    match_month = (on_date.month if hemisphere == Hemisphere.Northern
+                   else (on_date.month + 6) % 12)
+    return [tip._replace(month=on_date.month) for tip in tips
+            if tip.month == match_month and tip.day == on_date.day]
 
 
 def choose(collection, n: int):
@@ -346,9 +357,11 @@ def format_tip(tip: Tip):
 
 
 if __name__ == '__main__':
-    on_date = datetime.strptime(
-        sys.argv[1], '%Y-%m-%d') if sys.argv[1:] else date.today()
-    print('Tips for', on_date)
-    for n, tip in enumerate(get_tips(on_date)):
+    on_date = (datetime.strptime(sys.argv[1], '%Y-%m-%d')
+               if sys.argv[1:] else date.today())
+    hemisphere = (Hemisphere[sys.argv[2]]
+                  if len(sys.argv) > 2 else Hemisphere.Northern)
+    print('Tips for', on_date, 'in the', hemisphere.name, 'hemisphere:')
+    for n, tip in enumerate(get_tips(on_date, hemisphere)):
         print(f'{n+1}.', format_tip(tip))
         print
