@@ -29,7 +29,7 @@ update: | $(venv)
 $(payload): $(wildcard *.py) config.ini bot_clientcred.secret | $(venv) dist
 	rm -rf $(@)
 	zip $(@) $(^) -x \*.pyc
-	root=$$(pwd); cd $(venv)/lib/$(python)/site-packages; \
+	root=$$(pwd); cd $(venv)/lib/$(python)/site-packages && \
 		zip -r $$root/$(@) ./!(pip*|wheel*|setuptools*|easy_install*) -x \*.pyc
 
 bot_clientcred.secret: | $(venv)
