@@ -1,4 +1,4 @@
-# Succulents Reminders Bot (Northern Hemisphere)
+# Succulents Reminders Bot
 
 A bot for posting seasonal tips for succulent care.
 
