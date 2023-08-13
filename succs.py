@@ -1,6 +1,6 @@
 import sys
 from random import choice
-from enum import Enum, auto
+from enum import Enum, StrEnum, auto
 from typing import NamedTuple
 from datetime import date, datetime
 
@@ -191,7 +191,7 @@ tips = [
 ]
 
 
-class Variety(Enum):
+class Variety(StrEnum):
     """Succulent variety."""
 
     # Spring/autumn
@@ -342,9 +342,8 @@ def describe_date(tip: Tip):
 def format_tip(tip: Tip):
     """Return a string representation of the tip."""
     date_str = describe_date(tip)
-    example_list = '\n'.join([name for name in
-                              sorted(variety.name for variety in
-                                     exemplar_succulents[tip.succulent_type])])
+    example_list = '\n'.join([str(name).title() for name in
+                              sorted(exemplar_succulents[tip.succulent_type])])
     return f'''Succulent tip for {date_str}: {tip.title}
 
 {tip.description}

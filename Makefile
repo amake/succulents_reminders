@@ -2,7 +2,7 @@ SHELL := /bin/bash -O extglob
 venv := .env
 payload := dist/lambda-deploy.zip
 lambda_name := SuccsRemindersNorthBot
-python := python3.10
+python := python3.11
 aws_args ?=
 
 .PHONY: zip
