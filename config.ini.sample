@@ -1,6 +1,10 @@
-[App]
+[North]
 app_name =
 api_base_url =
-[Auth]
+username =
+password =
+[South]
+app_name =
+api_base_url =
 username =
 password =

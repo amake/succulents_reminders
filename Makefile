@@ -5,6 +5,9 @@ lambda_name := SuccsRemindersNorthBot
 python := python3.11
 aws_args ?=
 
+flavors := North South
+secrets = $(addsuffix _clientcred.secret,$(flavors))
+
 .PHONY: zip
 zip: $(payload)
 
@@ -26,13 +29,16 @@ update: | $(venv)
 	$(venv)/bin/pip install --upgrade pip
 	$(venv)/bin/pip install --upgrade --upgrade-strategy eager -e .
 
-$(payload): $(wildcard *.py) config.ini bot_clientcred.secret | $(venv) dist
+$(payload): $(wildcard *.py) config.ini $(secrets) | $(venv) dist
 	rm -rf $(@)
 	zip $(@) $(^) -x \*.pyc
 	root=$$(pwd); cd $(venv)/lib/$(python)/site-packages && \
 		zip -r $$root/$(@) ./!(pip*|wheel*|setuptools*|easy_install*) -x \*.pyc
 
-bot_clientcred.secret: | $(venv)
+.PHONY: secrets
+secrets: $(secrets)
+
+$(secrets): | $(venv)
 	$(venv)/bin/python auth_setup.py
 
 .PHONY: deploy

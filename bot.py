@@ -4,32 +4,45 @@ from io import BytesIO
 from mastodon import Mastodon
 from configparser import ConfigParser
 from datetime import date
+from enum import StrEnum
 import succs
 
-config_file = 'config.ini'
 
-
-def load_config():
+def load_config(config_file):
     if not os.path.isfile(config_file):
-        print('No credentials file found. Please create one.')
+        print('No config file found. Please create one.')
         exit(1)
     c = ConfigParser()
     c.read(config_file)
     return c
 
 
-config = load_config()
-
-mastodon = Mastodon(client_id='bot_clientcred.secret',)
-mastodon.log_in(
-    config['Auth']['username'],
-    config['Auth']['password'],
-)
+config = load_config('config.ini')
 
 
-def choose_tip():
+class Flavor(StrEnum):
+    """Flavor of the bot."""
+
+    North = 'North'
+    South = 'South'
+
+
+def get_client(flavor: Flavor):
+    mastodon = Mastodon(client_id=f'{flavor}_clientcred.secret')
+    mastodon.log_in(
+        config[flavor]['username'],
+        config[flavor]['password'],
+    )
+    return mastodon
+
+
+def choose_tip(flavor: Flavor):
     today = date.today()
-    tips = succs.get_tips(today, succs.Hemisphere.Northern)
+    tips = succs.get_tips(
+        today,
+        succs.Hemisphere.Northern if flavor == Flavor.North
+        else succs.Hemisphere.Southern
+    )
     return tips[0] if tips else None
 
 
@@ -46,7 +59,9 @@ def s3_file(bucket: str, path: str):
         file_bytes.close()
 
 
-def post(tip: succs.Tip):
+def post(flavor: Flavor, tip: succs.Tip):
+    mastodon = get_client(flavor)
+
     images = succs.get_images(tip)
 
     media_dicts = []
@@ -64,8 +79,11 @@ def post(tip: succs.Tip):
 
 
 def do_toot(event, context):
-    tip = choose_tip()
-    if tip:
-        post(tip)
-    else:
-        print('No tips found for today.')
+    for flavor in Flavor:
+        if tip := choose_tip(flavor):
+            try:
+                post(flavor, tip)
+            except Exception as e:
+                print(f'Failed to post for {flavor}: {e}')
+        else:
+            print(f'No tips found for {flavor} today.')
