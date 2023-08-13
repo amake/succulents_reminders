@@ -344,7 +344,9 @@ def format_tip(tip: Tip):
     date_str = describe_date(tip)
     example_list = '\n'.join([str(name).title() for name in
                               sorted(exemplar_succulents[tip.succulent_type])])
-    return f'''Succulent tip for {date_str}: {tip.title}
+    return f'''Succulent tip for {date_str}:
+
+{tip.title}
 
 {tip.description}
 
