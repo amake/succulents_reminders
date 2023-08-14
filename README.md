@@ -2,4 +2,5 @@
 
 A bot for posting seasonal tips for succulent care.
 
-https://botsin.space/@succs_north
+- [Northern Hemisphere](https://botsin.space/@succs_north)
+- [Southern Hemisphere](https://botsin.space/@succs_south)
