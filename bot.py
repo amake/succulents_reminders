@@ -90,4 +90,4 @@ def do_toot(event, context):
             except Exception as e:
                 print(f'Failed to post for {flavor}: {e}')
         else:
-            print(f'No tips found for {flavor} today.')
+            print(f'No tips found for {flavor} on {date}.')
