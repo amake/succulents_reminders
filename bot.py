@@ -28,11 +28,7 @@ class Flavor(StrEnum):
 
 
 def get_client(flavor: Flavor):
-    mastodon = Mastodon(client_id=f'{flavor}_clientcred.secret')
-    mastodon.log_in(
-        config[flavor]['username'],
-        config[flavor]['password'],
-    )
+    mastodon = Mastodon(access_token=f'{flavor}_usercred.secret')
     return mastodon
 
 

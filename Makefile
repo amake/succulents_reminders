@@ -6,7 +6,7 @@ python := python3.11
 aws_args ?=
 
 flavors := North South
-secrets = $(addsuffix _clientcred.secret,$(flavors))
+secrets = $(addsuffix _usercred.secret,$(flavors))
 
 .PHONY: zip
 zip: $(payload)

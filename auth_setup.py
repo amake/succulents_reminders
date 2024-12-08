@@ -15,6 +15,8 @@ def load_config(config_file):
 
 config = load_config('config.ini')
 
+scopes = ['write:media', 'write:statuses']
+
 for flavor in bot.Flavor:
     secret_file = f'{flavor}_clientcred.secret'
 
@@ -25,7 +27,18 @@ for flavor in bot.Flavor:
     Mastodon.create_app(
         config[flavor]['app_name'],
         api_base_url=config[flavor]['api_base_url'],
+        scopes=scopes,
         to_file=secret_file
+    )
+
+    mastodon = Mastodon(client_id=secret_file)
+    print('Visit the URL below and enter the code.')
+    print(mastodon.auth_request_url(scopes=scopes))
+    code = input('Code: ')
+    mastodon.log_in(
+        to_file=f'{flavor}_usercred.secret',
+        code=code,
+        scopes=scopes
     )
 
 print('Done')
