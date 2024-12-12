@@ -32,9 +32,9 @@ def get_client(flavor: Flavor):
     return mastodon
 
 
-def choose_tip(flavor: Flavor, date: datetime.date = None):
+def choose_tip(flavor: Flavor, date: datetime.date):
     tips = succs.get_tips(
-        date or datetime.date.today(),
+        date,
         succs.Hemisphere.Northern if flavor == Flavor.North
         else succs.Hemisphere.Southern
     )
@@ -79,10 +79,13 @@ def do_toot(event, context):
         date = datetime.datetime.strptime(event['date'], '%Y-%m-%d')
     except Exception:
         pass
+    date = date or datetime.date.today()
     for flavor in Flavor:
         if tip := choose_tip(flavor, date):
+            print(f'Posting for {flavor}: {tip}...', end=None)
             try:
                 post(flavor, tip)
+                print('Succcess')
             except Exception as e:
                 print(f'Failed to post for {flavor}: {e}')
         else:
